@@ -1,8 +1,19 @@
 import { Link } from "react-router-dom";
 import logo from "../../assets/logo.svg"
 import * as RoutePath from '../../routes/RoutePath'
+import { useContext } from "react";
+import { AuthContext } from "../../context/AuthContext";
 
 const Navbar = () => {
+  const {user,logout}=useContext(AuthContext)
+
+  //logout
+  const handleLogout=()=>{
+    logout()
+    .then(()=>{})
+    .catch(error=>console.log(error.message))
+
+  }
 	const menuItem = <>
 	<li> <Link to={RoutePath.HOME} >Home</Link> </li>
 	<li> <Link to='' >About</Link> </li>
@@ -29,6 +40,8 @@ const Navbar = () => {
     </ul>
   </div>
   <div className="navbar-end">
+    {user? <button className="btn normal-case bg-amber-400 hover:bg-red-500 mr-3"onClick={handleLogout}>Logout</button>
+    :<Link to={RoutePath.SIGNIN}><button className="btn normal-case bg-amber-400 hover:bg-red-500 mr-3">Login</button></Link>}
     <button className="btn btn-outline btn-warning">Appointment</button>
   </div>
 </div>
