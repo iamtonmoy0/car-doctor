@@ -20,6 +20,9 @@ const Navbar = () => {
 	<li> <Link to='' >Services</Link> </li>
 	<li> <Link to='' >Blog</Link> </li>
 	<li> <Link to='' >Contact</Link> </li>
+  {user? 
+  <li> <Link to={RoutePath.BOOKINGS} >My Booking</Link> </li> :
+  <></> }
 	</>
 	return (
 		<div className="navbar bg-base-100">
