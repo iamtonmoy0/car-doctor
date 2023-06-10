@@ -7,20 +7,17 @@ import { AuthContext } from '../../context/AuthContext';
 
 const Login = () => {
 
-    const { signIn } = useContext(AuthContext);
+    const { logIn } = useContext(AuthContext);
 
-    const handleLogin = event => {
+    const handleLogin = (event)=> {
         event.preventDefault();
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(name, email, password)
-        signIn(email, password)
-            .then(result => {
-                const user = result.user;
-                console.log(user);
-            })
-            .catch(error => console.log(error));
+        console.log(email, password)
+        logIn(email, password)
+        .then(() => {})
+        .catch(error => console.log(error.message));
     }
 
     return (
